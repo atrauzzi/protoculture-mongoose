@@ -1,4 +1,5 @@
 import { ServiceProvider } from "protoculture";
+import { mongooseSymbols } from "./index";
 import { MongooseConfiguration } from "./MongooseConfiguration";
 
 
@@ -13,5 +14,7 @@ declare module "protoculture/lib/ServiceProvider" {
 // tslint:disable-next-line:only-arrow-functions
 ServiceProvider.prototype.configureMongoose = function (mongooseConfiguration: MongooseConfiguration) {
 
-    this.bundle.container.bind().toConstantValue(mongooseConfiguration);
+    this.bundle.container
+        .bind(mongooseSymbols.Configuration)
+        .toConstantValue(mongooseConfiguration);
 };
