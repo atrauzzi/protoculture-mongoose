@@ -5,5 +5,5 @@ export interface MongooseConfiguration {
 
     uris: string;
 
-    options: mongoose.ConnectionOptions;
+    options?: mongoose.ConnectionOptions;
 }
