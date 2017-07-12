@@ -1,3 +1,4 @@
+import * as _ from "lodash";
 import { ServiceProvider } from "protoculture";
 import { mongooseSymbols } from "./index";
 import * as mongoose from "mongoose";
@@ -12,7 +13,7 @@ export class MongooseServiceProvider extends ServiceProvider {
 
         const configuration = this.bundle.container.get<MongooseConfiguration>(mongooseSymbols.Configuration);
 
-        configuration.options.useMongoClient = true;
+        _.set(configuration, "options.useMongoClient", true);
 
         const service = await mongoose.connect(configuration.uris, configuration.options);
 
