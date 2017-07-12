@@ -11,6 +11,9 @@ export class MongooseServiceProvider extends ServiceProvider {
     public async boot() {
 
         const configuration = this.bundle.container.get<MongooseConfiguration>(mongooseSymbols.Configuration);
+
+        configuration.options.useMongoClient = true;
+
         const service = await mongoose.connect(configuration.uris, configuration.options);
 
         this.bundle.container
