@@ -4,6 +4,8 @@ import * as mongoose from "mongoose";
 import { MongooseConfiguration } from "./MongooseConfiguration";
 
 
+(mongoose as any).Promise = Promise;
+
 export class MongooseServiceProvider extends ServiceProvider {
 
     public async boot() {
